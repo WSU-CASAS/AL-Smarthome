@@ -327,7 +327,7 @@ def compute_feature(dt, sensorid1, sensorid2):
         cf.numwin += 1
         if cf.no_overlap and cf.mode != "ANNOTATE":
             cf.wincnt = 0
-    return False, tempdata
+    return True, tempdata
 
 
 def save_params():
@@ -442,7 +442,7 @@ def train_model():
         print('results', results)
     elif cf.mode == "PARTITION":
         dlength = len(cf.data)
-        splitpoint = (2 * dlength) / 3
+        splitpoint = int((2 * dlength) / 3)
         xtrain = cf.data[:splitpoint]
         ytrain = cf.labels[:splitpoint]
         xtest = cf.data[splitpoint:]
